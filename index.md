@@ -1,4 +1,6 @@
-**About me:** I am a PhD student at the Department of Computing Science, University of Alberta. I work with [Dr. Sarah Nadi](sarahnadi.org) at the Software Maintenance and Reuse lab. My current research interst is detecting code smells in Python programs.
+![profile pic](/boneyag.github.io/assets/profile2.jpg)
+
+**About me:** I am a PhD student at the Department of Computing Science, University of Alberta. I work with [Dr. Sarah Nadi](https://sarahnadi.org/) at the Software Maintenance and Reuse lab. My current research interst is detecting code smells in Python programs.
 
 ## Education
 * MSc (2020), University of Lethbridge, Lethbirdge, Canada
