@@ -35,3 +35,5 @@ Credits:
 	Other:
 		jQuery (jquery.com)
 		Responsive Tools (github.com/ajlkn/responsive-tools)
+
+[Another source](https://blog.entheosweb.com/tutorials/learn-how-to-create-a-simple-html5-website/)
