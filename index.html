@@ -17,30 +17,58 @@
 	</head>
 	<body class="is-preload">
 
+		<!-- Fixed Top Navigation -->
+		<nav class="navbar">
+			<div class="navbar-container">
+				<a href="#" class="navbar-brand">
+					<span class="full-name">Akalanka Galappaththi</span>
+					<span class="short-name">Akalanka</span>
+				</a>
+				
+				<!-- Desktop Menu -->
+				<ul class="navbar-menu">
+					<li><a href="#one">About</a></li>
+					<li><a href="#two">Education</a></li>
+					<li><a href="#three">Publications</a></li>
+					<li><a href="#four">Services</a></li>
+					<li><a href="#five">Awards</a></li>
+				</ul>
+				
+				<!-- Mobile Hamburger Button -->
+				<button class="navbar-toggle" id="navbar-toggle">
+					<span></span>
+					<span></span>
+					<span></span>
+				</button>
+				
+				<!-- Mobile Menu (Hidden by default) -->
+				<ul class="navbar-menu mobile" id="navbar-mobile">
+					<li><a href="#one">About</a></li>
+					<li><a href="#two">Education</a></li>
+					<li><a href="#three">Publications</a></li>
+					<li><a href="#four">Services</a></li>
+					<li><a href="#five">Awards</a></li>
+				</ul>
+			</div>
+		</nav>
+
 		<!-- Header -->
 			<header id="header">
 				
 				<div class="inner">
 					<a href="#" class="image avatar"><img src="images/profile2.jpg" alt="profile picture" /></a>
-					<h1><strong>Akalanka Galappaththi</strong><br />
-					<!-- PhD student at <a href="https://sarahnadi.org/smr/members/" target="_blank">SMR</a> <img src="images/fulls/logo_smr_cropped.png" class="logo"> lab<br />  -->
-					Department of Computing Science<br /> 
-					<a href="http://www.ualberta.ca" target="_blank">University of Alberta</a></h1>
+					<div class="text-content">
+						<h1><strong>Akalanka Galappaththi</strong></h1>
+						<!-- PhD student at <a href="https://sarahnadi.org/smr/members/" target="_blank">SMR</a> <img src="images/fulls/logo_smr_cropped.png" class="logo"> lab<br />  -->
+						<h3><a href="https://www.ualberta.ca/en/computing-science/index.html" target="_blank">Department of Computing Science</a></h3>
+						<h3><a href="http://www.ualberta.ca" target="_blank">University of Alberta</a></h3>
+					</div>
 				</div>  
 								
 			</header>
 
 		<!-- Main -->
 			<div id="main">
-				<div class="inner">
-					<ul class="menu-bar">
-						<li><a href="#one">About</a></li>
-						<li><a href="#two">Education</a></li>
-						<li><a href="#three">Publication</a></li>
-						<li><a href="#four">Services</a></li>
-						<li><a href="#five">Awards</a></li>
-					</ul>
-				</div>
 					
 				<!-- One -->
 					<section id="one">
@@ -209,6 +237,37 @@
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
+
+			<!-- Mobile Navigation Toggle Script -->
+			<script>
+				document.addEventListener('DOMContentLoaded', function() {
+					const navbarToggle = document.getElementById('navbar-toggle');
+					const navbarMobile = document.getElementById('navbar-mobile');
+					
+					navbarToggle.addEventListener('click', function() {
+						navbarToggle.classList.toggle('active');
+						navbarMobile.classList.toggle('active');
+					});
+					
+					// Close mobile menu when clicking on a link
+					const mobileLinks = navbarMobile.querySelectorAll('a');
+					mobileLinks.forEach(link => {
+						link.addEventListener('click', function() {
+							navbarToggle.classList.remove('active');
+							navbarMobile.classList.remove('active');
+						});
+					});
+					
+					// Close mobile menu when clicking outside
+					document.addEventListener('click', function(event) {
+						const isClickInsideNav = navbarToggle.contains(event.target) || navbarMobile.contains(event.target);
+						if (!isClickInsideNav && navbarMobile.classList.contains('active')) {
+							navbarToggle.classList.remove('active');
+							navbarMobile.classList.remove('active');
+						}
+					});
+				});
+			</script>
 
 	</body>
 </html>

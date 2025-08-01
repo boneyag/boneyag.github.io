@@ -73,54 +73,205 @@ input, select, textarea {
 	appearance: none;
 }
 
-/* Menu bar*/
+/* Navigation Bar - Modern Fixed Top Design */
 
-	.menu-bar {
-		border-radius: 25px;
-		height: fit-content;
-		display: inline-flex;
-		background-color: rgba(255, 255, 255, 0.4);
-		-webkit-backdrop-filter: blur(10px);
-		backdrop-filter: blur(10px);
-		align-items: center;
-		padding: 0 10px;
-		margin: 50px 0 0 0;
+	:root {
+		--navbar-height: 50px; /* Define navbar height as CSS variable */
+	}
 
-		
-	}
-	.menu-bar li {
-		list-style: none;
-		color: white;
-		font-family: sans-serif;
-		font-weight: bold;
-		padding: 12px 16px;
-		margin: 0 8px;
-		position: relative;
-		cursor: pointer;
-		white-space: nowrap;
-	}
-	.menu-bar li a {
-		color: rgba(66, 66, 66, 0.815);
-		border-bottom: none;
-	}
-	.menu-bar li::before {
-		content: " ";
-		position: absolute;
+	.navbar {
+		position: fixed;
 		top: 0;
 		left: 0;
-		height: 100%;
-		width: 100%;
-		z-index: -1;
-		transition: 0.2s;
-		border-radius: 25px;
+		right: 0;
+		z-index: 1000;
+		background-color: rgba(255, 255, 255, 0.95);
+		-webkit-backdrop-filter: blur(10px);
+		backdrop-filter: blur(10px);
+		box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+		padding: 0.75rem 2rem;
+		transition: all 0.3s ease;
+		height: var(--navbar-height); /* Set explicit height */
+		box-sizing: border-box;
 	}
-	.menu-bar li:hover {
-		color: black;
+
+	.navbar-container {
+		max-width: 1200px;
+		margin: 0 auto;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
 	}
-	.menu-bar li:hover::before {
-		background: linear-gradient(to bottom, #e8edec34, #d2d1d337);
-		box-shadow: 0px 3px 20px 0px rgb(255, 255, 255);
-		transform: scale(1);
+
+	.navbar-brand {
+		font-size: 1.2rem;
+		font-weight: bold;
+		color: #787878;
+		text-decoration: none;
+		border-bottom: none;
+		white-space: nowrap; /* Prevent any wrapping */
+	}
+
+	.navbar-brand .full-name {
+		display: inline;
+	}
+
+	.navbar-brand .short-name {
+		display: none;
+	}
+
+	.navbar-menu {
+		display: flex;
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		gap: 2rem;
+	}
+
+	.navbar-menu li {
+		position: relative;
+	}
+
+	.navbar-menu li a {
+		color: #787878;
+		text-decoration: none;
+		border-bottom: none;
+		padding: 0.5rem 1rem;
+		border-radius: 20px;
+		transition: all 0.3s ease;
+		font-weight: 500;
+		white-space: nowrap;
+	}
+
+	.navbar-menu li a:hover {
+		color: #49bf9d;
+		background-color: rgba(73, 191, 157, 0.1);
+		transform: translateY(-2px);
+	}
+
+	/* Hamburger Menu Button (Hidden on Desktop) */
+	.navbar-toggle {
+		display: none;
+		flex-direction: column;
+		cursor: pointer;
+		padding: 0.5rem;
+		border: none;
+		background: none;
+		gap: 3px;
+	}
+
+	.navbar-toggle span {
+		width: 25px;
+		height: 3px;
+		background-color: #787878;
+		transition: all 0.3s ease;
+		border-radius: 2px;
+	}
+
+	.navbar-toggle:hover span {
+		background-color: #49bf9d;
+	}
+
+	/* Animated hamburger to X transformation */
+	.navbar-toggle.active span:nth-child(1) {
+		transform: rotate(45deg) translate(6px, 6px);
+	}
+
+	.navbar-toggle.active span:nth-child(2) {
+		opacity: 0;
+	}
+
+	.navbar-toggle.active span:nth-child(3) {
+		transform: rotate(-45deg) translate(6px, -6px);
+	}
+
+	/* Mobile Menu (Hidden by default) */
+	.navbar-menu.mobile {
+		display: none;
+		position: absolute;
+		top: 100%;
+		left: 0;
+		right: 0;
+		background-color: rgba(255, 255, 255, 0.98);
+		backdrop-filter: blur(10px);
+		flex-direction: column;
+		padding: 1rem;
+		box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+		border-radius: 0 0 10px 10px;
+	}
+
+	.navbar-menu.mobile.active {
+		display: flex;
+	}
+
+	.navbar-menu.mobile li {
+		margin: 0;
+	}
+
+	.navbar-menu.mobile li a {
+		display: block;
+		padding: 0.75rem 1rem;
+		text-align: center;
+		border-radius: 8px;
+	}
+
+	/* Responsive Navigation Breakpoints */
+	
+	/* Switch to short name before the full name would wrap */
+	@media screen and (max-width: 900px) {
+		.navbar-brand .full-name {
+			display: none;
+		}
+
+		.navbar-brand .short-name {
+			display: inline;
+		}
+	}
+
+	@media screen and (max-width: 768px) {
+		.navbar {
+			padding: 0.5rem 1rem;
+		}
+
+		.navbar-menu {
+			display: none;
+		}
+
+		.navbar-toggle {
+			display: flex;
+		}
+
+		.navbar-menu.mobile {
+			gap: 0.5rem;
+		}
+
+		/* Ensure short name is still shown */
+		.navbar-brand .full-name {
+			display: none;
+		}
+
+		.navbar-brand .short-name {
+			display: inline;
+		}
+	}
+
+	@media screen and (max-width: 480px) {
+		.navbar {
+			padding: 0.5rem 1rem;
+		}
+
+		.navbar-brand {
+			font-size: 1rem;
+		}
+
+		/* Keep short name on mobile */
+		.navbar-brand .full-name {
+			display: none;
+		}
+
+		.navbar-brand .short-name {
+			display: inline;
+		}
 	}
 	
 
@@ -128,6 +279,8 @@ input, select, textarea {
 
 	html {
 		box-sizing: border-box;
+		scroll-behavior: smooth; /* Smooth scrolling */
+		scroll-padding-top: calc(var(--navbar-height) + 1rem); /* Offset for fixed navbar + extra spacing */
 	}
 
 	*, *:before, *:after {
@@ -136,6 +289,7 @@ input, select, textarea {
 
 	body {
 		background: #fff;
+		padding-top: var(--navbar-height); /* Add top padding to account for fixed navbar */
 	}
 
 		body.is-preload *, body.is-preload *:before, body.is-preload *:after {
@@ -2736,7 +2890,7 @@ input, select, textarea {
 	#main {
 		margin-left: 35%;
 		max-width: 54em;
-		padding: 8em 4em 4em 4em;
+		padding: 0 4em 4em 4em; /* Remove excessive top padding */
 		width: calc(100% - 35%);
 	}
 
@@ -2744,12 +2898,13 @@ input, select, textarea {
 			border-top: solid 2px #efefef;
 			margin: 1em 0 0 0;
 			padding: 1em 0 0 0;
+			scroll-margin-top: calc(var(--navbar-height) + 1rem); /* Ensure sections scroll with proper offset */
 		}
 
 			#main > section:first-child {
 				border-top: 0;
 				margin-top: 0;
-				padding-top: 0;
+				padding-top: calc(var(--navbar-height) + 1rem); /* Only first section gets navbar offset */
 			}
 
 /* Poptrox */
@@ -3080,7 +3235,7 @@ input, select, textarea {
 			#main {
 				margin-left: 30%;
 				max-width: none;
-				padding: 6em 3em 3em 3em;
+				padding: 0 3em 3em 3em; /* Remove excessive top padding */
 				width: calc(100% - 30%);
 			}
 
@@ -3111,14 +3266,42 @@ input, select, textarea {
 				left: auto;
 				padding: 6em 4em;
 				position: relative;
-				text-align: center;
+				text-align: left;
 				top: auto;
 				width: 100%;
-				display: block;
+				display: flex; /* Use flexbox for horizontal layout */
+				align-items: flex-start; /* Align items to top */
+				gap: 2rem; /* Space between picture and text */
 			}
+
+				#header .inner {
+					display: flex;
+					align-items: flex-start;
+					gap: 2rem;
+					width: 100%;
+				}
+
+				#header .image.avatar {
+					margin: 0; /* Remove bottom margin */
+					flex-shrink: 0; /* Prevent image from shrinking */
+					width: 120px; /* Fixed width for better mobile experience */
+				}
+
+				#header .text-content {
+					flex: 1; /* Take remaining space */
+					display: flex;
+					flex-direction: column;
+					gap: 0.5rem;
+				}
 
 				#header h1 {
 					font-size: 1.75em;
+					margin: 0;
+				}
+
+				#header h3 {
+					margin: 0;
+					font-size: 1.1em;
 				}
 
 					#header h1 br {
@@ -3162,7 +3345,7 @@ input, select, textarea {
 
 			#main {
 				margin: 0;
-				padding: 6em 4em;
+				padding: 0 4em 4em 4em; /* Remove excessive top padding */
 				width: 100%;
 			}
 
@@ -3210,10 +3393,23 @@ input, select, textarea {
 
 			#header {
 				padding: 2.25em 1.5em;
+				gap: 1.5rem; /* Smaller gap on mobile */
 			}
+
+				#header .inner {
+					gap: 1.5rem;
+				}
+
+				#header .image.avatar {
+					width: 100px; /* Smaller avatar on small screens */
+				}
 
 				#header h1 {
 					font-size: 1.35em;
+				}
+
+				#header h3 {
+					font-size: 1em;
 				}
 
 		/* Footer */
@@ -3225,12 +3421,17 @@ input, select, textarea {
 		/* Main */
 
 			#main {
-				padding: 2.25em 1.5em 0.25em 1.5em;
+				padding: 0 1.5em 0.25em 1.5em; /* Remove excessive top padding */
 			}
 
 				#main > section {
 					margin: 2.25em 0 0 0;
 					padding: 2.25em 0 0 0;
+				}
+
+				#main > section:first-child {
+					margin-top: calc(var(--navbar-height) + 1rem); /* Only first section on mobile gets navbar offset */
+					padding-top: 1rem;
 				}
 
 		/* Poptrox */
@@ -3254,11 +3455,42 @@ input, select, textarea {
 
 			#header {
 				padding: 4.5em 1.5em;
+				gap: 1rem;
 			}
+
+				#header .inner {
+					gap: 1rem;
+				}
+
+				#header .image.avatar {
+					width: 80px; /* Even smaller on tiny screens */
+				}
+
+				#header h1 {
+					font-size: 1.2em;
+				}
+
+				#header h3 {
+					font-size: 0.9em;
+				}
 
 				#header h1 br {
 					display: none;
 				}
+
+	/* Optional: Stack vertically on very small screens (uncomment if needed)
+		@media screen and (max-width: 360px) {
+			#header .inner {
+				flex-direction: column;
+				align-items: flex-start;
+			}
+			
+			#header .image.avatar {
+				width: 100px;
+				margin-bottom: 1rem;
+			}
+		}
+	*/
 
 		/* Footer */
 
