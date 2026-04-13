@@ -26,15 +26,21 @@
 				</a>
 				
 				<!-- Desktop Menu -->
-				<ul class="navbar-menu">
-					<li><a href="#one">About</a></li>
-					<!-- <li><a href="#two">Projects</a></li> -->
-					<li><a href="#three">Technical Skills</a></li>
-					<li><a href="#four">Experience</a></li>
-					<li><a href="#five">Education</a></li>
-					<li><a href="#six">Publications</a></li>
-					<li><a href="#seven">Recognition</a></li>
-				</ul>
+				<div class="navbar-menu-shell">
+					<button class="navbar-scroll-btn left" id="navbar-scroll-left" type="button" aria-label="Scroll navigation left">&#8249;</button>
+					<div class="navbar-menu-scroll" id="navbar-menu-scroll">
+						<ul class="navbar-menu">
+							<li><a href="#one">About</a></li>
+							<li><a href="#two">Projects</a></li>
+							<li><a href="#three">Skills</a></li>
+							<li><a href="#four">Experience</a></li>
+							<li><a href="#five">Education</a></li>
+							<li><a href="#six">Papers</a></li>
+							<li><a href="#seven">Awards</a></li>
+						</ul>
+					</div>
+					<button class="navbar-scroll-btn right" id="navbar-scroll-right" type="button" aria-label="Scroll navigation right">&#8250;</button>
+				</div>
 				
 				<!-- Mobile Hamburger Button -->
 				<button class="navbar-toggle" id="navbar-toggle">
@@ -46,12 +52,12 @@
 				<!-- Mobile Menu (Hidden by default) -->
 				<ul class="navbar-menu mobile" id="navbar-mobile">
 					<li><a href="#one">About</a></li>
-					<!-- <li><a href="#two">Projects</a></li> -->
-					<li><a href="#three">Technical Skills</a></li>
+					<li><a href="#two">Projects</a></li>
+					<li><a href="#three">Skills</a></li>
 					<li><a href="#four">Experience</a></li>
 					<li><a href="#five">Education</a></li>
-					<li><a href="#six">Publications</a></li>
-					<li><a href="#seven">Recognition</a></li>
+					<li><a href="#six">Papers</a></li>
+					<li><a href="#seven">Awards</a></li>
 				</ul>
 			</div>
 		</nav>
@@ -79,7 +85,26 @@
 						</header>
 						<!-- <p>I recently received my PhD in Computer Science from the University of Alberta. My research emphasizes understanding developer interactions with data science APIs and leveraging large language models to detect and address API misuses effectively. 
 						</p> -->
-						<p>I recently completed my PhD in Computer Science at the University of Alberta, where I studied how developers use data science library APIs and how to improve code reliability in data-science workflows. I am actively seeking data scientist and data analyst roles, with interests in turning complex data into clear insights, building practical models, and dashboards to communicate results to support decision-making. My background combines rigorous research, statistical thinking, and hands-on experience with data science libraries and large language models.</p>
+						<p>I'm a data scientist with a PhD from the University of Alberta and 7+ years of experience applying machine learning, NLP, and statistical modeling to complex, real-world problems. My doctoral research focused on how developers interact with data science library APIs and how to improve code reliability in data-science workflows — work that combined rigorous empirical methodology with LLM-based solutions and large-scale data pipelines. I'm actively seeking senior data scientist roles where I can bring that foundation into industry — designing production-grade ML systems, running principled experiments, and translating messy, high-dimensional data into decisions that matter. I care about building things that are both statistically sound and practically deployable.</p>
+					</section>
+
+					<section id="two">
+						<h2>Projects</h2>
+						<div class="row">
+							<article class="col-12 col-12-xsmall work-item">
+								<h3>Credit Risk Decision System – End-to-End ML Service </h3>
+								<p>GitHub: <a href="https://github.com/boneyag/CreditRisk>" target="_blank">github.com/boneyag/CreditRisk</a></p>
+								<p>Production-grade ML system applying rigorous statistical methodology to real-world credit adjudication – from raw data through containerized REST API deployment </p>
+
+								<ul>
+									<li>Designed and validated a challenger model (XGBoost vs. logistic regression baseline) using rigorous hypothesis testing: McNemar's test yielded p = 4.1e-38 and bootstrap CIs on accuracy delta confirmed a statistically robust +3.7% gain.</li>
+									<li>Engineered a modular, containerised training pipeline (Docker Compose) with decoupled training/serving stages, versioned artifact manifests, and structured JSON audit logging on every prediction – mirroring production ML deployment practices.</li>
+									<li>Built a FastAPI REST service with automated endpoint tests (pytest) and Pydantic schema validation, achieving environment parity between training and inference containers.</li>
+									<li>Optimised model for risk-centric recall on high-default applicants (F1-score: 0.92), translating business objectives into metric selection decisions rather than defaulting to accuracy – consistent with real credit risk constraints.</li>
+									<li>Extending system with SHAP-based explanations per prediction for adjudicator transparency, and AWS Fargate deployment with Prometheus monitoring for real-time feature drift detection.</li>
+								</ul>
+							</article>
+
 					</section>
 
 					<section id="three">
@@ -177,6 +202,18 @@
 								</ul>
 							</article>
 							<article class="col-12 col-12-xsmall work-item">
+								<h3>Data Analytics Consultant</h3>
+								<h4>Triggericon (2024 - 2025)</h4>
+								<ul>
+									<li>Designed and executed A/B experiments to evaluate the relative impact of Google Ads vs. social media campaigns – including hypothesis framing, alpha/beta calibration, and sample size planning – delivering a statistically grounded channel recommendation to stakeholders.</li>
+									<li>Built a reusable Python sample size planning tool, enabling the team to independently scope future experiments without analyst involvement for routine campaign decisions.</li>
+									<li>Analyzed consumer engagement data from Google Analytics across click-through rates, cost-per-click, and conversion rates, identifying optimization opportunities that informed campaign budget adjustments.</li>
+									<li>Developed an executive revenue dashboard tracking total revenue, month-over-month growth, cost-vs-revenue by channel, and new vs. returning customer segmentation.</li>
+								</ul>
+							</article>
+								</ul>
+							</article>
+							<article class="col-12 col-12-xsmall work-item">
 								<h3>Software Engineering Researcher (Data Analysis &amp; NLP)</h3> <h4>University of Lethbridge (2018 - 2020)</h4>
 								<p>GitHub: <a href="https://github.com/boneyag/TOBE" target="_blank">github.com/boneyag/TOBE</a></p>
 								<ul>
@@ -187,7 +224,7 @@
 								</ul>
 							</article>
 							<article class="col-12 col-12-xsmall work-item">
-								<h3>Technical Lead &amp; Project Coordinator (Teaching Assistant)</h3> <h4>University of Alberta (2020 - 2025)</h4>
+								<h3>Technical Lead &amp; Project Coordinator </h3> <h4>University of Alberta (2020 - 2025)</h4>
 								<ul>
 									<li><strong>Agile Project Leadership:</strong> Mentored 20+ software development teams through the full project lifecycle using Agile practices, including sprint planning, scrum, and Kanban boards.</li>
 									<li><strong>Stakeholder Communication:</strong> Acted as liaison between student teams and course instructors, helping clarify project requirements and ensure alignment with objectives.</li>
@@ -358,41 +395,56 @@
 			<script>
 				document.addEventListener('DOMContentLoaded', function() {
 					const navbar = document.querySelector('.navbar');
-					const navbarContainer = document.querySelector('.navbar-container');
-					const navbarBrand = document.querySelector('.navbar-brand');
-					const desktopMenu = document.querySelector('.navbar-menu:not(.mobile)');
+						const desktopMenuScroll = document.getElementById('navbar-menu-scroll');
+						const scrollLeftBtn = document.getElementById('navbar-scroll-left');
+						const scrollRightBtn = document.getElementById('navbar-scroll-right');
 					const navbarToggle = document.getElementById('navbar-toggle');
 					const navbarMobile = document.getElementById('navbar-mobile');
 					const navLinks = document.querySelectorAll('.navbar-menu a[href^="#"]');
 					const sections = document.querySelectorAll('#main section[id]');
+
+						function updateDesktopScrollButtons() {
+							if (!desktopMenuScroll || navbar.classList.contains('use-mobile')) return;
+
+							const maxScroll = desktopMenuScroll.scrollWidth - desktopMenuScroll.clientWidth;
+							const hasOverflow = maxScroll > 2;
+							const atStart = desktopMenuScroll.scrollLeft <= 2;
+							const atEnd = desktopMenuScroll.scrollLeft >= maxScroll - 2;
+
+							scrollLeftBtn.classList.toggle('is-visible', hasOverflow && !atStart);
+							scrollRightBtn.classList.toggle('is-visible', hasOverflow && !atEnd);
+						}
 
 					function updateNavbarLayout() {
 						const forceMobile = window.matchMedia('(max-width: 768px)').matches;
 
 						if (forceMobile) {
 							navbar.classList.add('use-mobile');
+								scrollLeftBtn.classList.remove('is-visible');
+								scrollRightBtn.classList.remove('is-visible');
 							return;
 						}
 
 						navbar.classList.remove('use-mobile');
 						navbarToggle.classList.remove('active');
 						navbarMobile.classList.remove('active');
-
-						const availableWidth = navbarContainer.clientWidth;
-						const brandWidth = navbarBrand.offsetWidth;
-						const menuWidth = desktopMenu.scrollWidth;
-						const estimatedToggleWidth = 44;
-						const spacingBuffer = 24;
-
-						if (brandWidth + menuWidth + estimatedToggleWidth + spacingBuffer > availableWidth) {
-							navbar.classList.add('use-mobile');
-						}
+							updateDesktopScrollButtons();
 					}
 
 					navbarToggle.addEventListener('click', function() {
 						navbarToggle.classList.toggle('active');
 						navbarMobile.classList.toggle('active');
 					});
+
+						scrollLeftBtn.addEventListener('click', function() {
+							desktopMenuScroll.scrollBy({ left: -220, behavior: 'smooth' });
+						});
+
+						scrollRightBtn.addEventListener('click', function() {
+							desktopMenuScroll.scrollBy({ left: 220, behavior: 'smooth' });
+						});
+
+						desktopMenuScroll.addEventListener('scroll', updateDesktopScrollButtons, { passive: true });
 					
 					// Close mobile menu when clicking on a link
 					const mobileLinks = navbarMobile.querySelectorAll('a');
